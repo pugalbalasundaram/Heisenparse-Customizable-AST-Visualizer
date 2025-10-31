@@ -1,4 +1,5 @@
 HeisenParse: Intelligent Code Parsing and Visualization System
+
 📌 Project Overview
 
 HeisenParse is an advanced AI-powered system designed to analyze, parse, and visualize source code structures in real time. It helps developers understand complex codebases by generating Abstract Syntax Trees (ASTs) and offering a clear structural representation of source code. Developed using C# and WPF, the system provides an interactive graphical interface where users can upload source files, view hierarchical code trees, and regenerate or refactor code dynamically. HeisenParse bridges the gap between traditional text-based coding and visual comprehension, supporting both beginners and experienced developers.
