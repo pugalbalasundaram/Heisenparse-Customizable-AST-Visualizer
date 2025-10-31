@@ -1,0 +1,8 @@
+﻿<Window x:Class="HeisenParserWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="HeisenParse" Height="600" Width="1000"
+        WindowStartupLocation="CenterScreen"
+        Background="#1E1E1E">
+    <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
+</Window>

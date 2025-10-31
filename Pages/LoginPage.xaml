@@ -1,0 +1,220 @@
+<Page x:Class="HeisenParserWPF.Pages.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:local="clr-namespace:HeisenParserWPF.Pages"
+      mc:Ignorable="d"
+      Title="LoginPage"
+      Background="#121212">
+
+    <Page.Resources>
+
+        <DropShadowEffect x:Key="MaterialDesignShadowDepth1" 
+                          BlurRadius="10" 
+                          ShadowDepth="3" 
+                          Color="#000000" 
+                          Opacity="0.5"/>
+
+        <Style x:Key="InputFieldStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="border" 
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                CornerRadius="5">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="#00C2FF"/>
+                                <Setter TargetName="border" Property="Background" Value="#383838"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="#00D7FF"/>
+                                <Setter TargetName="border" Property="BorderThickness" Value="2"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="PasswordFieldStyle" TargetType="{x:Type PasswordBox}">
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type PasswordBox}">
+                        <Border x:Name="border" 
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="#00C2FF"/>
+                                <Setter TargetName="border" Property="Background" Value="#383838"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="#00D7FF"/>
+                                <Setter TargetName="border" Property="BorderThickness" Value="2"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="PrimaryButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#00A2FF"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" 
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="8"
+                                Padding="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#00B2FF"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#0088CC"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Cursor="Hand">
+        <Grid Width="450" Height="500">
+            <Rectangle x:Name="LoginCardRect" 
+                       Fill="#1E1E1E" 
+                       RadiusX="16" 
+                       RadiusY="16" 
+                       Effect="{StaticResource MaterialDesignShadowDepth1}">
+
+                <Rectangle.Style>
+                    <Style TargetType="Rectangle">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect BlurRadius="15" ShadowDepth="8" Color="#000000" Opacity="0.8"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Rectangle.Style>
+
+            </Rectangle>
+
+            <Border Padding="30" Background="Transparent">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" Margin="0,10,0,30">
+                        <TextBlock Text="Heisenparser Login"
+                                   FontSize="28"
+                                   FontWeight="Bold"
+                                   Foreground="#00A2FF"
+                                   HorizontalAlignment="Center"/>
+                        <TextBlock Text="Access your coding assistant and history"
+                                   FontSize="14"
+                                   Foreground="#888888"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,5,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Margin="20,0,20,0">
+
+                        <TextBlock Text="Username (Used for display and chat history)" Foreground="#CCCCCC" FontWeight="SemiBold" Margin="0,10,0,5"/>
+                        <TextBox x:Name="UsernameBox"
+                                 TabIndex="1"
+                                 Height="40"
+                                 Background="#2C2C2C"
+                                 BorderBrush="#00A2FF"
+                                 BorderThickness="1"
+                                 CaretBrush="White"
+                                 Padding="10"
+                                 KeyDown="Input_KeyDown_Navigate"
+                                 Style="{StaticResource InputFieldStyle}"
+                                 ToolTip="Enter your desired display name."/>
+
+                        <TextBlock Text="Email Address" Foreground="#CCCCCC" FontWeight="SemiBold" Margin="0,20,0,5"/>
+                        <TextBox x:Name="EmailBox"
+                                 TabIndex="2"
+                                 Height="40"
+                                 Background="#2C2C2C"
+                                 BorderBrush="#00A2FF"
+                                 BorderThickness="1"
+                                 CaretBrush="White"
+                                 Padding="10"
+                                 KeyDown="Input_KeyDown_Navigate"
+                                 Style="{StaticResource InputFieldStyle}"
+                                 ToolTip="Enter the email associated with your account."/>
+
+                        <TextBlock Text="Password" Foreground="#CCCCCC" FontWeight="SemiBold" Margin="0,20,0,5"/>
+                        <PasswordBox x:Name="PasswordBox"
+                                     TabIndex="3"
+                                     Height="40"
+                                     Foreground="White" 
+                                     Background="#2C2C2C"
+                                     BorderBrush="#00A2FF"
+                                     BorderThickness="1"
+                                     CaretBrush="White"
+                                     Padding="10"
+                                     KeyDown="PasswordBox_KeyDown_Login"
+                                     Style="{StaticResource PasswordFieldStyle}"
+                                     ToolTip="Enter your password."/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="3"
+                                Orientation="Vertical"
+                                HorizontalAlignment="Center"
+                                Margin="0,30,0,0">
+                        <Button x:Name="LoginButton"
+                                TabIndex="4"
+                                Content="LOG IN"
+                                Width="180"
+                                Height="45"
+                                Click="Login_Click"
+                                Style="{StaticResource PrimaryButtonStyle}"/>
+
+                        <TextBlock Text="New user? Sign up here"
+                                   Foreground="#00A2FF"
+                                   Cursor="Hand"
+                                   FontWeight="Medium"
+                                   MouseLeftButtonUp="SignUp_Click"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,15,0,0"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>
